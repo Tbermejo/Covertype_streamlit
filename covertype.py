@@ -3,10 +3,18 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
+from ucimlrepo import fetch_ucirepo
 
-# Cargar el dataset covertype (asegurarse de tenerlo disponible)
-# Puedes usar pd.read_csv() o cualquier otro método según el formato de tu dataset
-# dataset = pd.read_csv('ruta/a/tu/dataset.csv')
+# Cargar el dataset covertype
+covertype = fetch_ucirepo(id=31)
+
+# Extraer los datos
+X = covertype.data.features
+y = covertype.data.targets
+
+# Convertir a un DataFrame de Pandas
+dataset = pd.concat([X, y], axis=1)
+dataset.columns = list(X.columns) + ['target']  # Aseguramos nombres de columnas correctos
 
 # Mostrar las primeras filas dinámicamente
 if st.sidebar.checkbox("Mostrar primeras filas del dataset"):
