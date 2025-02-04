@@ -5,6 +5,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from ucimlrepo import fetch_ucirepo
 
+def main():
+    st.set_page_config(page_title="Coberturas forestales", layout="wide")
+    st.title("🖼️ Bosque Nacional Roosevelt del norte de Colorado")
+    st.write("""Clasificación de píxeles en 7 tipos de cobertura forestal según atributos como elevación, aspecto, pendiente, sombreado, tipo de suelo""")
+
 # Cargar el dataset covertype
 covertype = fetch_ucirepo(id=31)
 
