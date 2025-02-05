@@ -5,6 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from ucimlrepo import fetch_ucirepo
 
+
 # Configuración de la página
 st.set_page_config(page_title="Coberturas forestales", layout="wide")
 
