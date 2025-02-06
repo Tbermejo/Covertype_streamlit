@@ -78,6 +78,7 @@ if capitulo == "Introducción":
             "Tipos de suelo categorizados del 1 al 40."
         ]
     })
+
     
     st.write("### 📋 Variables del Dataset")
     st.table(variables_info)
