@@ -170,7 +170,7 @@ variables_range = {
     "Horizontal_Distance_To_Hydrology": {"min": 0, "max": 1350, "desc": "Distancia a agua"},
     "Vertical_Distance_To_Hydrology": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
     "Horizontal_Distance_To_Roadways": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
-    "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7000, "desc": "Distancia a punto de ignición"}
+    "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7001, "desc": "Distancia a punto de ignición"}
 }
 
 #Ingresar variables para clasificación
