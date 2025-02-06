@@ -152,7 +152,7 @@ elif capitulo == "Visualización de Datos":
     
 elif capitulo == "Modelos de Clasificación":
     st.header("🤖 KNeighborsClassifier")
-    st.write("Aquí se implementará un modelo previamente entrenado por el método tradicional.")
+    st.write("Aquí se implementará un modelo previamente entrenado por el método KNeighborsClassifier.")
 
     # Espacio para incluir la implementación de modelos más adelante
     # Definir las características que necesita el modelo
@@ -162,10 +162,10 @@ feature_names = [
     "Horizontal_Distance_To_Fire_Point"
 ]
 
-# --- 📊 Rango de valores para las variables ---
+#Rango de valores para las variables
 variables_range = {
     "Elevation": {"min": 1850, "max": 4000, "desc": "Elevación en metros"},
-    "Aspect": {"min": 0, "max": 360, "desc": "Orientación en grados de acimut"},
+    "Aspect": {"min": 0, "max": 360, "desc": "Orientación en grados de azimut"},
     "Slope": {"min": 0, "max": 60, "desc": "Pendiente en grados"},
     "Horizontal_Distance_To_Hydrology": {"min": 0, "max": 1350, "desc": "Distancia a cuerpos de agua"},
     "Vertical_Distance_To_Hydrology": {"min": -150, "max": 550, "desc": "Diferencia de altura cuerpos de agua"},
@@ -192,7 +192,7 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
         entrada = np.array(valores_usuario).reshape(1, -1)
         try:
             prediccion = modelo.predict(entrada)  # Hacer la predicción
-            st.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  # Muestra la clase predicha
+            st.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
