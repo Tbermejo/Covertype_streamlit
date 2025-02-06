@@ -4,3 +4,4 @@ ucimlrepo
 plotly
 seaborn
 pandas
+numpy
