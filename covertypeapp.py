@@ -35,8 +35,8 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
 st.title("Métodos de clasifificación para la predicción de coberturas forestales")
 
 if capitulo == "Introducción":
-    st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos. /n
-    El objetivo es clasificar el tipo de cobertura forestal según variables cartográficas como elevación, aspecto, pendiente, sombreado y tipo de suelo.""")
+    st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos.
+    El objetivo es clasificar el tipo de cobertura forestal según variables cartográficas como: """)
 
 # Definir los datos de las variables en un DataFrame
     variables_info = pd.DataFrame({
@@ -69,7 +69,24 @@ if capitulo == "Introducción":
     
     st.write("### 📋 Variables del Dataset")
     st.table(variables_info)
+    
+# Variable objetivo
+    st.write("""Donde la variable objetivo son las coberturas forestales que se describen a continuación:""")
 
+    variable_obj = pd.DataFrame({
+        "Tipo de cobertura": [
+            "Spruce/Fir - Pícea/abeto","Lodgepole Pine - Pino contorta","Ponderosa Pine - Pino ponderosa",
+            "Cottonwood/Willow - Álamo de Virginia/sauce","Aspen - Álamo temblón","Douglas-fir - Abeto de Douglas","Krummholz"
+        ],
+
+        "ID": [
+            "1","2","3","4","5","6","7"
+        ]
+    })
+
+    st.write("### 📋 Tipo de coberturas - Variable objetivo")
+    st.table(variable_obj)
+    
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
 
