@@ -167,10 +167,10 @@ variables_range = {
     "Elevation": {"min": 1850, "max": 4000, "desc": "Elevación en metros"},
     "Aspect": {"min": 0, "max": 360, "desc": "Orientación en grados de acimut"},
     "Slope": {"min": 0, "max": 60, "desc": "Pendiente en grados"},
-    "Horizontal_Distance_To_Hydrology": {"min": 0, "max": 1350, "desc": "Distancia a agua"},
-    "Vertical_Distance_To_Hydrology": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
+    "Horizontal_Distance_To_Hydrology": {"min": 0, "max": 1350, "desc": "Distancia a cuerpos de agua"},
+    "Vertical_Distance_To_Hydrology": {"min": -150, "max": 550, "desc": "Diferencia de altura cuerpos de agua"},
     "Horizontal_Distance_To_Roadways": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
-    "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7001, "desc": "Distancia a punto de ignición"}
+    "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7000, "desc": "Distancia a punto de incendios"}
 }
 
 #Ingresar variables para clasificación
