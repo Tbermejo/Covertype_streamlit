@@ -27,10 +27,10 @@ categorical_columns = dataset.select_dtypes(include=["object", "category"]).colu
 @st.cache_resource  # Para mejorar el rendimiento cargando el modelo solo una vez
 def load_model():
     with open("best_model_trained_classifier.pkl.gz", "rb") as file:
-        model_KNN = pickle.load(file)
-    return model_KNN
+        model = pickle.load(file)
+    return model
 
-modelo_KNN = load_model()
+modelo = load_model()
 
 # Barra lateral: Selección de capítulos
 st.sidebar.title("📚 Capítulos")
