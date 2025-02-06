@@ -71,7 +71,7 @@ if capitulo == "Introducción":
         ],
         "Descripción": [
             "Elevación en metros.",
-            "Orientación en grados de acimut.",
+            "Orientación en grados de azimut.",
             "Pendiente en grados.",
             "Distancia horizontal a las características de agua superficial más cercanas.",
             "Distancia vertical a las características de agua superficial más cercanas.",
