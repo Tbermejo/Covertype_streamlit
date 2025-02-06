@@ -39,7 +39,7 @@ modelo_seleccionado = st.sidebar.selectbox("Seleccione el modelo de clasificaci√
 # Cargar el modelo seleccionado
 @st.cache_resource
 def cargar_modelo(ruta):
-    with open(ruta, "rb") as file:
+    with gzip.open(ruta, "rb") as file:
         return pickle.load(file)
 
 modelo = cargar_modelo(model_paths[modelo_seleccionado])
