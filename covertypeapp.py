@@ -45,7 +45,6 @@ def cargar_modelo(ruta):
 modelo = cargar_modelo(model_paths[modelo_seleccionado])
 
 
-
 # Barra lateral: Selección de capítulos
 st.sidebar.title("📚 Capítulos")
 capitulo = st.sidebar.radio("Selecciona un capítulo:", [
