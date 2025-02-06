@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from ucimlrepo import fetch_ucirepo
 
 # Configuración de la página
-st.set_page_config(page_title="Coberturas forestales", layout="wide")
+st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
 
 def cargar_datos():
     """Carga el dataset covertype y lo formatea."""
@@ -32,11 +32,43 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
     "Modelos de Clasificación"
 ])
 
-st.title("🖼️ Bosque Nacional Roosevelt del norte de Colorado")
+st.title("Métodos de clasifificación para la predicción de coberturas forestales")
 
 if capitulo == "Introducción":
-    st.write("""Este estudio busca clasificar píxeles en 7 tipos de cobertura forestal 
-    según atributos como elevación, aspecto, pendiente, sombreado y tipo de suelo.""")
+    st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos. /n
+    El objetivo es clasificar el tipo de cobertura forestal según variables cartográficas como elevación, aspecto, pendiente, sombreado y tipo de suelo.""")
+
+# Definir los datos de las variables en un DataFrame
+    variables_info = pd.DataFrame({
+        "Variable": [
+            "Elevación", "Orientación", "Pendiente", "Distancia_horizontal_a_hidrología",
+            "Distancia_vertical_a_hidrología", "Distancia_horizontal_a_carreteras", 
+            "Hillshade_9am", "Hillshade_Noon", "Hillshade_3pm", 
+            "Horizontal_Distance_To_Fire_Point", "Área silvestre 1", 
+            "Área silvestre 2", "Área silvestre 3", "Área silvestre 4", 
+            "Tipo de suelo 1-40"
+        ],
+        "Descripción": [
+            "Elevación en metros.",
+            "Orientación en grados de acimut.",
+            "Pendiente en grados.",
+            "Distancia horizontal a las características de agua superficial más cercanas.",
+            "Distancia vertical a las características de agua superficial más cercanas.",
+            "Distancia horizontal a la carretera más cercana.",
+            "Índice de sombra de las colinas a las 9 a. m., solsticio de verano. Valor de 255.",
+            "Índice de sombra de las colinas al mediodía, solsticio de verano. Valor de 255.",
+            "Índice de sombra de las colinas a las 3 p. m., solsticio de verano. Valor de 255.",
+            "Distancia horizontal a los puntos de ignición de incendios forestales más cercanos.",
+            "Área silvestre Rawah.",
+            "Área silvestre Neota.",
+            "Área silvestre Comanche Peak.",
+            "Área silvestre Cache la Poudre.",
+            "Tipos de suelo categorizados del 1 al 40."
+        ]
+    })
+
+    st.write("### 📋 Variables del Dataset")
+    st.table(variables_info)
 
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
