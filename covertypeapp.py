@@ -172,6 +172,7 @@ variables_range = {
     "Distancia horizontal a los puntos de ignición de incendios": {"min": 0, "max": 7000, "desc": "Distancia a punto de ignición"},
 }
 
+
 #Ingresar variables para clasificación
 st.sidebar.header("📌 Ingrese los valores para clasificación")
 
