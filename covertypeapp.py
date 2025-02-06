@@ -71,7 +71,7 @@ if capitulo == "Introducción":
     st.table(variables_info)
     
 # Variable objetivo
-    st.write("""Donde la variable objetivo son las coberturas forestales que se describen a continuación:""")
+    st.write("""Donde la variable objetivo es el tipo de cobertura forestal, descrita a continuación:""")
 
     variable_obj = pd.DataFrame({
         "Tipo de cobertura": [
@@ -109,8 +109,8 @@ elif capitulo == "Visualización de Datos":
 
     chart_type = st.sidebar.selectbox(
         "Selecciona el tipo de gráfico:",
-        ["Dispersión", "Histograma", "Boxplot", "Matriz de dispersión",
-         "Mapa de correlación", "Gráfico de densidad (KDE)", "Treemap"]
+        ["Dispersión", "Distribución variable objetivo", "Matriz de dispersión",
+         "Mapa de correlación"]
     )
 
     if chart_type == "Dispersión" and len(numeric_columns) > 1:
@@ -119,14 +119,24 @@ elif capitulo == "Visualización de Datos":
         st.write(f"### Gráfico de dispersión: {x_var} vs {y_var}")
         fig = px.scatter(dataset, x=x_var, y=y_var, title=f"Dispersión de {x_var} vs {y_var}")
         st.plotly_chart(fig)
+        
+    elif chart_type == "Distribución Variable objetivo":
+        st.write("### Distribución de la variable objetivo (Cover_Type)")
+        fig, ax = plt.subplots(figsize=(8, 6))
+        sns.countplot(data=dataset, x='target', palette='viridis', ax=ax)
+        ax.set_title("Distribución de la variable objetivo (Cover_Type)")
+        ax.set_xlabel("Tipo de cobertura")
+        ax.set_ylabel("Frecuencia")
+        st.pyplot(fig)
     
     elif chart_type == "Mapa de correlación" and len(numeric_columns) > 1:
         st.write("### Mapa de correlación")
-        corr_matrix = dataset[numeric_columns].corr()
-        fig, ax = plt.subplots(figsize=(8, 6))
-        sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", cbar=True, fmt=".2f", linewidths=0.5, ax=ax)
+        corr = dataset.corr()
+        fig, ax = plt.subplots(figsize=(14, 10))
+        sns.heatmap(corr, annot=False, cmap="coolwarm", ax=ax)
+        ax.set_title("Mapa de correlación")
         st.pyplot(fig)
-
+    
 elif capitulo == "Modelos de Clasificación":
     st.header("🤖 Modelos de Clasificación")
     st.write("Aquí se implementarán y compararán diferentes modelos de clasificación.")
