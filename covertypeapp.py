@@ -23,6 +23,15 @@ dataset = cargar_datos()
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
+#Cargar modelo
+@st.cache_resource  # Para mejorar el rendimiento cargando el modelo solo una vez
+def load_model():
+    with open("best_model_trained_classifier.pkl.gz", "rb") as file:
+        model_KNN = pickle.load(file)
+    return model_KNN
+
+modelo = load_model()
+
 # Barra lateral: Selección de capítulos
 st.sidebar.title("📚 Capítulos")
 capitulo = st.sidebar.radio("Selecciona un capítulo:", [
@@ -138,10 +147,36 @@ elif capitulo == "Visualización de Datos":
         st.pyplot(fig)
     
 elif capitulo == "Modelos de Clasificación":
-    st.header("🤖 Modelos de Clasificación")
-    st.write("Aquí se implementarán y compararán diferentes modelos de clasificación.")
+    st.header("🤖 KNeighborsClassifier")
+    st.write("Aquí se implementará un modelo previamente entrenado por el método tradicional.")
 
     # Espacio para incluir la implementación de modelos más adelante
+    # Definir las características que necesita el modelo
+feature_names = [
+    "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
+    "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
+    "Horizontal_Distance_To_Fire_Points", "Cover_Type"
+    ]
 
+# Crear una sección en Streamlit para predicción
+    st.sidebar.header("Predicción de Cobertura Forestal")
+
+# Crear entradas en la barra lateral para cada variable del modelo
+    input_data = []
+for feature in feature_names:
+    value = st.sidebar.number_input(f"Ingrese {feature}:", value=0.0, step=1.0)
+    input_data.append(value)
+
+# Convertir los valores ingresados en un array numpy
+    input_array = np.array(input_data).reshape(1, -1)
+
+# Botón para realizar la predicción
+if st.sidebar.button("Predecir Cobertura"):
+    # Hacer la predicción
+    prediction = modelo.predict(input_array)
+    
+    # Mostrar resultado
+    st.write("### 🌲 Predicción de Tipo de Cobertura")
+    st.write(f"El modelo predice que la cobertura forestal es: **{prediction[0]}**")
 
 
