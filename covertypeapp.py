@@ -160,7 +160,7 @@ feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
     "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
     "Horizontal_Distance_To_Fire_Point"
-    ]
+]
 
 # --- 📊 Rango de valores para las variables ---
 variables_range = {
@@ -171,7 +171,7 @@ variables_range = {
     "Vertical_Distance_To_Hydrology": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
     "Horizontal_Distance_To_Roadways": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
     "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7001, "desc": "Distancia a punto de ignición"}
-    }
+}
 
 #Ingresar variables para clasificación
 st.sidebar.header("📌 Ingrese los valores para clasificación")
@@ -197,7 +197,4 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
-
-
-
 
