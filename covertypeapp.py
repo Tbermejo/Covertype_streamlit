@@ -26,14 +26,23 @@ dataset = cargar_datos()
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
-#Cargar modelo
-@st.cache_resource  # Para mejorar el rendimiento cargando el modelo solo una vez
-def load_model():
-    with gzip.open("best_model_trained_classifier.pkl.gz", "rb") as file:
-        model = pickle.load(file)
-    return model
+# Diccionario con nombres de modelos y sus rutas
+model_paths = {
+    "Modelo k Neighbors Classifier": "best_model_trained_classifier.pkl.gz",
+    "Modelo Red Neuronal": "model_trained_neuronal.pkl.gz",
+    
+}
 
-modelo = load_model()
+# Sidebar para elegir el modelo
+modelo_seleccionado = st.sidebar.selectbox("Seleccione el modelo de clasificación", list(model_paths.keys()))
+
+# Cargar el modelo seleccionado
+@st.cache_resource
+def cargar_modelo(ruta):
+    return pickle.load(ruta)
+
+modelo = cargar_modelo(model_paths[modelo_seleccionado])
+
 
 # Barra lateral: Selección de capítulos
 st.sidebar.title("📚 Capítulos")
