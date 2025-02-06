@@ -28,7 +28,7 @@ categorical_columns = dataset.select_dtypes(include=["object", "category"]).colu
 #Cargar modelo
 @st.cache_resource  # Para mejorar el rendimiento cargando el modelo solo una vez
 def load_model():
-    with open("best_model_trained_classifier.pkl.gz", "rb") as file:
+    with gzip.open("best_model_trained_classifier.pkl.gz", "rb") as file:
         model = pickle.load(file)
     return model
 
