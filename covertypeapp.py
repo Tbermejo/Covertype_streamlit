@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import gzip
 import pickle
 import plotly.express as px
@@ -160,25 +161,43 @@ feature_names = [
     "Horizontal_Distance_To_Fire_Points", "Cover_Type"
 ]
 
-# Crear una sección en Streamlit para predicción
-st.sidebar.header("Predicción de Cobertura Forestal")
+# --- 📊 Rango de valores para las variables ---
+variables_range = {
+    "Elevación": {"min": 1850, "max": 4000, "desc": "Elevación en metros"},
+    "Orientación": {"min": 0, "max": 360, "desc": "Orientación en grados de acimut"},
+    "Pendiente": {"min": 0, "max": 60, "desc": "Pendiente en grados"},
+    "Distancia_horizontal_a_hidrología": {"min": 0, "max": 1350, "desc": "Distancia a agua"},
+    "Distancia_vertical_a_hidrología": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
+    "Distancia_horizontal_a_carreteras": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
+    "Hillshade_9am": {"min": 0, "max": 255, "desc": "Sombra a las 9 AM"},
+    "Hillshade_Noon": {"min": 0, "max": 255, "desc": "Sombra al mediodía"},
+    "Hillshade_3pm": {"min": 0, "max": 255, "desc": "Sombra a las 3 PM"},
+    "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7000, "desc": "Distancia a punto de ignición"},
+}
 
-# Crear entradas en la barra lateral para cada variable del modelo
-input_data = []
-for feature in feature_names:
-    value = st.sidebar.number_input(f"Ingrese {feature}:", value=0.0, step=1.0)
-    input_data.append(value)
+#Ingresar variables para clasificación
+st.sidebar.header("📌 Ingrese los valores para clasificación")
 
-# Convertir los valores ingresados en un array numpy
-input_array = np.array(input_data).reshape(1, -1)
+valores_usuario = []
+for col, info in variables_range.items():
+    valor = st.sidebar.slider(
+        f"{col} - {info['desc']}",
+        min_value=float(info["min"]),
+        max_value=float(info["max"]),
+        value=(info["min"] + info["max"]) / 2
+    )
+    valores_usuario.append(valor)
 
-# Botón para realizar la predicción
-if st.sidebar.button("Predecir Cobertura"):
-    # Hacer la predicción
-    prediction = modelo.predict(input_array)
-    
-    # Mostrar resultado
-    st.write("### 🌲 Predicción de Tipo de Cobertura")
-    st.write(f"El modelo predice que la cobertura forestal es: **{prediction[0]}**")
+# Botón de clasificación
+if st.sidebar.button("🔍 Clasificar Cobertura"):
+    if modelo is not None:
+        entrada = np.array(valores_usuario).reshape(1, -1)
+        try:
+            prediccion = modelo.predict(entrada)  # Hacer la predicción
+            st.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  # Muestra la clase predicha
+        except Exception as e:
+            st.error(f"⚠️ Error al hacer la predicción: {e}")
+    else:
+        st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
 
 
