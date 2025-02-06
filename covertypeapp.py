@@ -171,6 +171,7 @@ variables_range = {
     "Distancia_vertical_a_hidrología": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
     "Distancia_horizontal_a_carreteras": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
     "Distancia horizontal a los puntos de ignición de incendios": {"min": 0, "max": 7000, "desc": "Distancia a punto de ignición"}
+
 }
 
 
@@ -198,5 +199,7 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
+
+
 
 
