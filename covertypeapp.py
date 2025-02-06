@@ -109,7 +109,7 @@ elif capitulo == "Visualización de Datos":
 
     chart_type = st.sidebar.selectbox(
         "Selecciona el tipo de gráfico:",
-        ["Dispersión", "Distribución variable objetivo", "Matriz de dispersión",
+        ["Dispersión", "Distribución variable objetivo",
          "Mapa de correlación"]
     )
 
