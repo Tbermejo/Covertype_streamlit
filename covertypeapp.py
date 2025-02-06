@@ -32,7 +32,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
     "Modelos de Clasificación"
 ])
 
-st.title("Métodos de clasifificación para la predicción de coberturas forestales")
+st.title("Métodos de clasificación para la predicción de coberturas forestales")
 
 if capitulo == "Introducción":
     st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos.
