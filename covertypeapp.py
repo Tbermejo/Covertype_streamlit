@@ -30,7 +30,7 @@ def load_model():
         model_KNN = pickle.load(file)
     return model_KNN
 
-modelo = load_model()
+modelo_KNN = load_model()
 
 # Barra lateral: Selección de capítulos
 st.sidebar.title("📚 Capítulos")
@@ -156,19 +156,19 @@ feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
     "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
     "Horizontal_Distance_To_Fire_Points", "Cover_Type"
-    ]
+]
 
 # Crear una sección en Streamlit para predicción
-    st.sidebar.header("Predicción de Cobertura Forestal")
+st.sidebar.header("Predicción de Cobertura Forestal")
 
 # Crear entradas en la barra lateral para cada variable del modelo
-    input_data = []
+input_data = []
 for feature in feature_names:
     value = st.sidebar.number_input(f"Ingrese {feature}:", value=0.0, step=1.0)
     input_data.append(value)
 
 # Convertir los valores ingresados en un array numpy
-    input_array = np.array(input_data).reshape(1, -1)
+input_array = np.array(input_data).reshape(1, -1)
 
 # Botón para realizar la predicción
 if st.sidebar.button("Predecir Cobertura"):
