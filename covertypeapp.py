@@ -26,6 +26,14 @@ dataset = cargar_datos()
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
+# Barra lateral: Selección de capítulos
+st.sidebar.title("📚 Capítulos")
+capitulo = st.sidebar.radio("Selecciona un capítulo:", [
+    "Introducción",
+    "Exploración de Datos",
+    "Visualización de Datos",
+    "Modelos de Clasificación"
+])
 # Diccionario con nombres de modelos y sus rutas
 model_paths = {
     "Modelo k Neighbors Classifier": "best_model_trained_classifier.pkl.gz",
@@ -44,15 +52,6 @@ def cargar_modelo(ruta):
 
 modelo = cargar_modelo(model_paths[modelo_seleccionado])
 
-
-# Barra lateral: Selección de capítulos
-st.sidebar.title("📚 Capítulos")
-capitulo = st.sidebar.radio("Selecciona un capítulo:", [
-    "Introducción",
-    "Exploración de Datos",
-    "Visualización de Datos",
-    "Modelos de Clasificación"
-])
 
 st.title("Métodos de clasificación de coberturas forestales")
 
