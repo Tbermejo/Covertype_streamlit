@@ -44,7 +44,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
     "Modelos de Clasificación"
 ])
 
-st.title("Métodos de clasificación para la clasificación de coberturas forestales")
+st.title("Métodos de clasificación de coberturas forestales")
 
 if capitulo == "Introducción":
     st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos.
@@ -160,7 +160,7 @@ feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
     "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
     "Horizontal_Distance_To_Fire_Point"
-]
+    ]
 
 # --- 📊 Rango de valores para las variables ---
 variables_range = {
@@ -171,7 +171,7 @@ variables_range = {
     "Vertical_Distance_To_Hydrology": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
     "Horizontal_Distance_To_Roadways": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
     "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7001, "desc": "Distancia a punto de ignición"}
-}
+    }
 
 #Ingresar variables para clasificación
 st.sidebar.header("📌 Ingrese los valores para clasificación")
