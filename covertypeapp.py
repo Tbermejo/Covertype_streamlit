@@ -53,7 +53,7 @@ def cargar_modelo(ruta):
 modelo = cargar_modelo(model_paths[modelo_seleccionado])
 
 
-st.title("Métodos de clasificación de coberturas forestales")
+st.title("Métodos de clasificación para el Dataset Covertype")
 
 if capitulo == "Introducción":
     st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos.
@@ -108,7 +108,8 @@ if capitulo == "Introducción":
 
     st.write("### 📋 Tipo de coberturas - Variable objetivo")
     st.table(variable_obj)
-    
+
+    st.write("""Fuente: Blackard, J. (1998). Covertype [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C50K5N.""")
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
 
