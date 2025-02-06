@@ -169,10 +169,6 @@ variables_range = {
     "Distancia_horizontal_a_hidrología": {"min": 0, "max": 1350, "desc": "Distancia a agua"},
     "Distancia_vertical_a_hidrología": {"min": -150, "max": 550, "desc": "Diferencia de altura con el agua"},
     "Distancia_horizontal_a_carreteras": {"min": 0, "max": 7000, "desc": "Distancia a la carretera"},
-    "Hillshade_9am": {"min": 0, "max": 255, "desc": "Sombra a las 9 AM"},
-    "Hillshade_Noon": {"min": 0, "max": 255, "desc": "Sombra al mediodía"},
-    "Hillshade_3pm": {"min": 0, "max": 255, "desc": "Sombra a las 3 PM"},
-    "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7000, "desc": "Distancia a punto de ignición"},
 }
 
 #Ingresar variables para clasificación
