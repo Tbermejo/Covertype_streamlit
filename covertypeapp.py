@@ -172,8 +172,6 @@ variables_range = {
     "Horizontal_Distance_To_Fire_Point": {"min": 0, "max": 7000, "desc": "Distancia a punto de ignición"}
 }
 
-
-
 #Ingresar variables para clasificación
 st.sidebar.header("📌 Ingrese los valores para clasificación")
 
