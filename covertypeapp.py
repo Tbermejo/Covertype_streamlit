@@ -184,7 +184,7 @@ variables_range = {
 }
 
 #Ingresar variables para clasificación
-st.sidebar.header("📌 Ingrese los valores para clasificación")
+st.sidebar.header("📌 Ingrese los valores para clasificar el tipo de cobertura:")
 
 valores_usuario = []
 for col, info in variables_range.items():
