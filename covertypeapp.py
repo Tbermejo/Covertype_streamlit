@@ -158,7 +158,7 @@ elif capitulo == "Modelos de Clasificación":
 feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
     "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
-    "Horizontal_Distance_To_Fire_Points", "Cover_Type"
+    "Cover_Type"
 ]
 
 # --- 📊 Rango de valores para las variables ---
