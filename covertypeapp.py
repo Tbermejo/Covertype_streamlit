@@ -199,7 +199,13 @@ for col, info in variables_range.items():
 # Botón de clasificación
 if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
-        entrada = np.array(valores_usuario).reshape(1, -1)
+        entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz de entrada
+
+        # Verificar si el modelo es una red neuronal que requiere conversión adicional
+        if hasattr(modelo, "predict_proba"):  
+            # Si el modelo tiene "predict_proba", asumimos que es una red neuronal o similar
+            entrada = entrada.astype(np.float32)  # Convertir a float32 (algunos modelos lo requieren)
+
         try:
             prediccion = modelo.predict(entrada)  # Hacer la predicción
             st.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
@@ -207,4 +213,5 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
+
 
