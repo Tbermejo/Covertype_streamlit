@@ -203,6 +203,7 @@ elif capitulo == "Modelos de Clasificación":
                 st.write(f"🔹 **{key}:** {value}")
                 st.caption(f"📘 {explanation}")  
 
+    
         except Exception as e:
             st.error(f"⚠️ Error al obtener los hiperparámetros del modelo: {e}")
 
