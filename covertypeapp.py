@@ -183,10 +183,10 @@ elif capitulo == "Modelos de Clasificación":
             scaler_usado = None
 
         if modelo_real:
-            st.sidebar.write(f"🛠 **Modelo en uso:** {type(modelo_real).__name__}")
+            st.write(f"🛠 **Modelo en uso:** {type(modelo_real).__name__}")
     
         if scaler_usado:
-            st.sidebar.write(f"⚖️ **Escalador aplicado:** {type(scaler_usado).__name__}")
+            st.write(f"⚖️ **Escalador aplicado:** {type(scaler_usado).__name__}")
 
         try:
             params = modelo_real.get_params()  # Obtener hiperparámetros del modelo real
@@ -194,14 +194,8 @@ elif capitulo == "Modelos de Clasificación":
 
         # Diccionario con descripciones de los hiperparámetros más comunes
             hyperparam_descriptions = {
-                "alpha": "Regularización: controla la penalización sobre los coeficientes.",
-                "l1_ratio": "Controla la mezcla entre L1 (Lasso) y L2 (Ridge) en ElasticNet.",
-                "kernel": "Función del núcleo utilizada en modelos Kernel.",
-                "C": "Inverso de la regularización en modelos como SVR (mayor = menos penalización).",
-                "gamma": "Parámetro del núcleo en modelos como SVR y Kernel Ridge.",
-                "n_estimators": "Número de árboles en modelos de Random Forest.",
-                "max_depth": "Profundidad máxima del árbol en Random Forest.",
-                "learning_rate": "Velocidad de aprendizaje en modelos basados en boosting."
+                "model__n_neighbors": "Número óptimo de vecinos más cercanos.",
+                "model__p": "métrica de distancia utilizada para calcular la similitud entre puntos."
             }
 
             for key, value in params.items():
@@ -213,10 +207,10 @@ elif capitulo == "Modelos de Clasificación":
             st.error(f"⚠️ Error al obtener los hiperparámetros del modelo: {e}")
 
 
-            # Mostrar MAE en la barra lateral de Streamlit
-        st.write("### 📏 Error Medio Absoluto (MAE):")
-        if isinstance(accuracy, (int, float)):  # Verifica si el MAE es numérico
-            st.write(f"📊 **accuracy:** {accuracy:.4f}")
+            # Mostrar precisión en la barra lateral de Streamlit
+        st.write("### 📏 Precisión del modelo:")
+        if isinstance(result, (int, float)):  # Verifica si el MAE es numérico
+            st.write(f"📊 **accuracy:** {result:.4f}")
             st.caption("📘 Métrica que indica la precisión del modelo.")
         else:
             st.warning("MAE del modelo cargado: accuracy")
