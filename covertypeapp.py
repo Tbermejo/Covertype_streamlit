@@ -36,7 +36,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
 ])
 # Diccionario con nombres de modelos y sus rutas
 model_paths = {
-    "Modelo k Neighbors Classifier": "best_model_trained_classifier.pkl.gz",
+    "Modelo K Neighbors Classifier": "best_model_trained_classifier.pkl.gz",
     "Modelo Red Neuronal": "model_trained_neuronal.pkl.gz",
     
 }
@@ -164,7 +164,75 @@ elif capitulo == "Modelos de Clasificación":
     st.header("🤖 KNeighborsClassifier")
     st.write("Aquí se implementará un modelo previamente entrenado por el método KNeighborsClassifier.")
 
-    # Espacio para incluir la implementación de modelos más adelante
+    #Información del modelo ---
+    st.write("📊 Parámetros del Modelo")
+
+    if modelo is not None:
+        modelo_tipo = type(modelo).__name__
+        st.write(f"📌 **Tipo de modelo:** {modelo_tipo}")
+
+        # Si el modelo es un pipeline, extraer la última etapa (el modelo real)
+        if isinstance(modelo, Pipeline):
+            modelo_real = modelo.named_steps.get("reg")  # Extrae la etapa "reg" (el regresor)
+            scaler_usado = modelo.named_steps.get("scaler")
+        else:
+            modelo_real = modelo
+            scaler_usado = None
+
+        if modelo_real:
+            st.sidebar.write(f"🛠 **Modelo en uso:** {type(modelo_real).__name__}")
+    
+        if scaler_usado:
+            st.sidebar.write(f"⚖️ **Escalador aplicado:** {type(scaler_usado).__name__}")
+
+        try:
+            params = modelo_real.get_params()  # Obtener hiperparámetros del modelo real
+            st.write("### 🔧 Hiperparámetros Ajustados:")
+
+        # Diccionario con descripciones de los hiperparámetros más comunes
+            hyperparam_descriptions = {
+                "alpha": "Regularización: controla la penalización sobre los coeficientes.",
+                "l1_ratio": "Controla la mezcla entre L1 (Lasso) y L2 (Ridge) en ElasticNet.",
+                "kernel": "Función del núcleo utilizada en modelos Kernel.",
+                "C": "Inverso de la regularización en modelos como SVR (mayor = menos penalización).",
+                "gamma": "Parámetro del núcleo en modelos como SVR y Kernel Ridge.",
+                "n_estimators": "Número de árboles en modelos de Random Forest.",
+                "max_depth": "Profundidad máxima del árbol en Random Forest.",
+                "learning_rate": "Velocidad de aprendizaje en modelos basados en boosting."
+            }
+
+            for key, value in params.items():
+                explanation = hyperparam_descriptions.get(key, "Sin descripción disponible")
+                st.write(f"🔹 **{key}:** {value}")
+                st.caption(f"📘 {explanation}")  
+
+        except Exception as e:
+            st.error(f"⚠️ Error al obtener los hiperparámetros del modelo: {e}")
+
+
+            # Mostrar MAE en la barra lateral de Streamlit
+        st.write("### 📏 Error Medio Absoluto (MAE):")
+        if isinstance(accuracy, (int, float)):  # Verifica si el MAE es numérico
+            st.write(f"📊 **accuracy:** {accuracy:.4f}")
+            st.caption("📘 Métrica que indica la precisión del modelo.")
+        else:
+            st.warning("MAE del modelo cargado: accuracy")
+        
+            #Mostrar coeficientes si están disponibles
+        st.write("### 📊 Coeficientes del Modelo:")
+        if hasattr(modelo_real, "coef_"):
+            coeficientes = modelo_real.coef_
+            st.sidebar.write(coeficientes)
+        else:
+            st.sidebar.warning("⚠️ Este modelo no tiene coeficientes disponibles.")
+
+    else:
+        st.sidebar.warning("⚠️ Modelo no cargado. No se pueden mostrar los parámetros.")
+
+
+
+
+
     # Definir las características que necesita el modelo
 feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
