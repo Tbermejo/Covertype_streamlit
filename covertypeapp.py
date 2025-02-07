@@ -7,6 +7,10 @@ import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
 from ucimlrepo import fetch_ucirepo
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, classification_report
 
 # Configuración de la página
 st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
