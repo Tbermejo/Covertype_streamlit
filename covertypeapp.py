@@ -40,7 +40,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
 ])
 # Diccionario con nombres de modelos y sus rutas
 model_paths = {
-    "Modelo K Neighbors Classifier": "best_model_trained_classifier.pkl.gz",
+    "Modelo K Nearest Neighbors": "best_model_trained_classifier.pkl.gz",
     "Modelo Red Neuronal": "model_trained_neuronal.pkl.gz",
     
 }
@@ -164,10 +164,11 @@ elif capitulo == "Visualización de Datos":
         st.pyplot(fig)
     
 elif capitulo == "Modelos de Clasificación":
-    st.header("🤖 KNeighborsClassifier")
+    st.header("🤖 K- Nearest Neighbors")
     st.write("Aquí se implementará un modelo previamente entrenado por el método KNeighborsClassifier.")
 
-    #Información del modelo ---
+    
+    #Información del modelo
     st.write("📊 Parámetros del Modelo")
 
     if modelo is not None:
@@ -189,8 +190,11 @@ elif capitulo == "Modelos de Clasificación":
             st.write(f"⚖️ **Escalador aplicado:** {type(scaler_usado).__name__}")
 
         try:
-            params = modelo_real.get_params()  # Obtener hiperparámetros del modelo real
-            st.write("### 🔧 Hiperparámetros Ajustados:")
+            if model is not None:
+                params = model.get_params()
+            else:
+                params = {}
+                st.write("### 🔧 Hiperparámetros Ajustados:")
 
         # Diccionario con descripciones de los hiperparámetros más comunes
             hyperparam_descriptions = {
