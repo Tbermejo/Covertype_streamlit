@@ -226,7 +226,7 @@ if modelo is not None:
             st.write("### 📏 Precisión del modelo:")
             st.write(f"📊 **Accuracy:** {accuracy:.4f}")
             st.caption("📘 Métrica que indica la precisión del modelo.")
-        except Exception as e:
+    except Exception as e:
         st.error(f"⚠️ Error al calcular la precisión: {e}")
     else:
         st.warning("⚠️ No se pudo cargar el modelo.")
