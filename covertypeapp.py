@@ -220,7 +220,7 @@ elif capitulo == "Modelos de Clasificación":
         else:
             st.warning("MAE del modelo cargado: accuracy")
         
-        if modelo is not None:
+if modelo is not None:
     try:
             accuracy = modelo.score(X_test, y_test)  # Calcula la precisión
             st.write("### 📏 Precisión del modelo:")
@@ -232,7 +232,6 @@ elif capitulo == "Modelos de Clasificación":
         st.warning("⚠️ No se pudo cargar el modelo.")
 
     
-
 
 
     # Definir las características que necesita el modelo
