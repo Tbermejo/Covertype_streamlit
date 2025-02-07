@@ -170,7 +170,7 @@ elif capitulo == "Modelos de Clasificación":
     
     #Información del modelo
     st.write("📊 Parámetros del Modelo")
-
+    modelo = cargar_modelo(model_paths[modelo_seleccionado])
     if modelo is not None:
         modelo_tipo = type(modelo).__name__
         st.write(f"📌 **Tipo de modelo:** {modelo_tipo}")
@@ -282,7 +282,7 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
             if len(prediccion.shape) > 1 and prediccion.shape[1] > 1:
                 prediccion = np.argmax(prediccion, axis=1)  # Tomar la clase con mayor probabilidad
 
-            st.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
+            st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
