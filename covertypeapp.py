@@ -27,6 +27,12 @@ def cargar_datos():
 
 # Cargar el dataset
 dataset = cargar_datos()
+X = dataset.drop(columns=["target"])  # Variables predictoras
+y = dataset["target"]  # Variable objetivo
+# Dividir en conjuntos de entrenamiento y prueba (70%-30%)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=123, stratify=y
+)
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
