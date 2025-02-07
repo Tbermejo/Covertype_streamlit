@@ -52,7 +52,6 @@ def cargar_modelo(ruta):
 
 modelo = cargar_modelo(model_paths[modelo_seleccionado])
 
-
 st.title("Métodos de clasificación para el Dataset Covertype")
 
 if capitulo == "Introducción":
