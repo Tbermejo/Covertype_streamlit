@@ -214,11 +214,6 @@ elif capitulo == "Modelos de Clasificación":
 
             # Mostrar precisión en la barra lateral de Streamlit
         st.write("### 📏 Precisión del modelo:")
-        if isinstance(result, (int, float)):  # Verifica si el MAE es numérico
-            st.write(f"📊 **accuracy:** {result:.4f}")
-            st.caption("📘 Métrica que indica la precisión del modelo.")
-        else:
-            st.warning("MAE del modelo cargado: accuracy")
         
 if modelo is not None:
     try:
