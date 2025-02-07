@@ -220,18 +220,18 @@ elif capitulo == "Modelos de Clasificación":
         else:
             st.warning("MAE del modelo cargado: accuracy")
         
-            #Mostrar coeficientes si están disponibles
-        st.write("### 📊 Coeficientes del Modelo:")
-        if hasattr(modelo_real, "coef_"):
-            coeficientes = modelo_real.coef_
-            st.sidebar.write(coeficientes)
-        else:
-            st.sidebar.warning("⚠️ Este modelo no tiene coeficientes disponibles.")
-
+        if modelo is not None:
+    try:
+            accuracy = modelo.score(X_test, y_test)  # Calcula la precisión
+            st.write("### 📏 Precisión del modelo:")
+            st.write(f"📊 **Accuracy:** {accuracy:.4f}")
+            st.caption("📘 Métrica que indica la precisión del modelo.")
+        except Exception as e:
+        st.error(f"⚠️ Error al calcular la precisión: {e}")
     else:
-        st.sidebar.warning("⚠️ Modelo no cargado. No se pueden mostrar los parámetros.")
+        st.warning("⚠️ No se pudo cargar el modelo.")
 
-
+    
 
 
 
