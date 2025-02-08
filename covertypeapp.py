@@ -37,10 +37,6 @@ st.write("📊 **Distribución de clases después de reclasificación:**")
 st.write(y.value_counts())
 
 
-# Mostrar información en Streamlit
-st.write(f"✅ **Datos cargados con {dataset.shape[0]} filas y {dataset.shape[1]} columnas.**")
-st.write("🔹 **Ejemplo de datos:**", dataset.head())
-
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
