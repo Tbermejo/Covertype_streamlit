@@ -23,7 +23,12 @@ def cargar_datos():
     y = covertype.data.targets
     dataset = pd.concat([X, y], axis=1)
     dataset.columns = list(X.columns) + ['target']
-    dataset["target"] = dataset["target"].astype(str)
+    #dataset["target"] = dataset["target"].astype(str)
+    dataset["target"] = pd.to_numeric(dataset["target"], errors="coerce")
+
+# Verificar los valores únicos antes de reclasificar
+    st.write("📌 Valores únicos antes de reclasificación:", dataset["target"].unique())
+
     dataset["target"] = dataset["target"].apply(lambda x: x if x in [1, 2] else 3)
     dataset["target"] = dataset["target"].astype(str)
     return dataset
@@ -32,9 +37,6 @@ def cargar_datos():
 dataset = cargar_datos()
 X = dataset.drop(columns=["target"])  # Variables predictoras
 y = dataset["target"]  # Variable objetivo
-
-st.write(f"📊 **El dataset tiene {dataset.shape[0]} filas y {dataset.shape[1]} columnas.**")
-
 
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
@@ -71,6 +73,8 @@ if capitulo == "Introducción":
     st.write("""El dataset Covertype proporciona información de cuatro áreas naturales localizadas en el Parque Natural Roosevelt en el Norte de Colorado, Estados Unidos.
     El objetivo es clasificar el tipo de cobertura forestal según variables cartográficas como: """)
 
+    st.write(f"📊 **El dataset tiene {dataset.shape[0]} filas y {dataset.shape[1]} columnas.**")
+    
 # Definir los datos de las variables en un DataFrame
     variables_info = pd.DataFrame({
         "Variable": [
