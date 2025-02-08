@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -34,9 +33,8 @@ dataset = cargar_datos()
 X = dataset.drop(columns=["target"])  # Variables predictoras
 y = dataset["target"]  # Variable objetivo
 
-# Ver distribución de clases
-st.write("📊 **Distribución de clases después de reclasificación:**")
-st.write(y.value_counts())
+st.write(f"📊 **El dataset tiene {dataset.shape[0]} filas y {dataset.shape[1]} columnas.**")
+
 
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
