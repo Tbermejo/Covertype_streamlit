@@ -135,11 +135,8 @@ if capitulo == "Introducción":
     ax.grid(axis="y", linestyle="--", alpha=0.7)
     st.pyplot(fig)
 
-
-
-
-
     st.write("""Fuente: Blackard, J. (1998). Covertype [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C50K5N.""")
+
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
 
