@@ -11,7 +11,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
-
+streamlit run tu_archivo.py
 # Configuración de la página
 st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
 
