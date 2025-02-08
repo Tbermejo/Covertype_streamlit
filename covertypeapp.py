@@ -126,12 +126,12 @@ if capitulo == "Introducción":
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
 
-    if st.sidebar.checkbox("Mostrar primeras filas"):
+    if st.checkbox("Mostrar primeras filas"):
         n_rows = st.sidebar.slider("Número de filas a mostrar:", 1, len(dataset), 5)
         st.write(f"### Primeras {n_rows} filas del dataset")
         st.write(dataset.head(n_rows))
     
-    if st.sidebar.checkbox("Mostrar información general"):
+    if st.checkbox("Mostrar información general"):
         st.write("### Información general del dataset")
         st.write("#### Tipos de datos y valores nulos:")
         st.write(dataset.dtypes)
