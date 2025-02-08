@@ -127,7 +127,7 @@ elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
 
     if st.checkbox("Mostrar primeras filas"):
-        n_rows = st.sidebar.slider("Número de filas a mostrar:", 1, len(dataset), 5)
+        n_rows = st.slider("Número de filas a mostrar:", 1, len(dataset), 5)
         st.write(f"### Primeras {n_rows} filas del dataset")
         st.write(dataset.head(n_rows))
     
