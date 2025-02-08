@@ -104,7 +104,7 @@ if capitulo == "Introducción":
     st.table(variables_info)
     
 # Variable objetivo
-    st.write("""Donde la variable objetivo es el tipo de cobertura forestal, para el ejercicio, se realizó una reclasificación en tres tipos 
+    st.write("""Donde la variable objetivo es el tipo de cobertura forestal. Para el ejercicio, se realizó una reclasificación en tres tipos 
 , las cuales de describen a continuación:""")
 
     variable_obj = pd.DataFrame({
@@ -125,14 +125,19 @@ if capitulo == "Introducción":
     st.write(y.value_counts())
     
     class_distribution = y.value_counts()
-    fig, ax = plt.subplots()
-    class_distribution.plot(kind="bar", ax=ax, color="skyblue", edgecolor="black")
-    ax.set_title("Distribución de Clases")
-    ax.set_xlabel("Clase")
-    ax.set_ylabel("Frecuencia")
-    ax.set_xticks(range(len(class_distribution.index)))  # Asegurar etiquetas bien alineadas
-    ax.set_xticklabels(class_distribution.index, rotation=0)  # Evitar rotación de etiquetas
+    fig, ax = plt.subplots(figsize=(7, 5))
+    colors = ["#FF6F61", "#6B5B95", "#88B04B", "#F7CAC9", "#92A8D1", "#955251", "#B565A7"]
+    class_distribution.plot(kind="bar", ax=ax, color=colors[:len(class_distribution)], edgecolor="black")
+    ax.set_title("📊 Distribución de Clases", fontsize=14, fontweight="bold", color="#333333")
+    ax.set_xlabel("Clase", fontsize=12, fontweight="bold", color="#555555")
+    ax.set_ylabel("Frecuencia", fontsize=12, fontweight="bold", color="#555555")
+    ax.set_xticklabels(class_distribution.index, rotation=0, fontsize=11)
+    ax.grid(axis="y", linestyle="--", alpha=0.7)
     st.pyplot(fig)
+
+
+
+
 
     st.write("""Fuente: Blackard, J. (1998). Covertype [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C50K5N.""")
 elif capitulo == "Exploración de Datos":
