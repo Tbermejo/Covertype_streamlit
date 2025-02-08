@@ -1,4 +1,4 @@
-git add . && git commit -m "Fix train_test_split import" && git push
+
 import streamlit as st
 import pandas as pd
 import numpy as np
