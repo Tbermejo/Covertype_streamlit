@@ -25,6 +25,12 @@ def cargar_datos():
     dataset.columns = list(X.columns) + ['target']
     dataset["target"] = pd.to_numeric(dataset["target"], errors="coerce")
     dataset["target"] = dataset["target"].apply(lambda x: x if x in [1, 2] else 3)
+    feature_names = [
+        "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
+        "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
+        "Horizontal_Distance_To_Fire_Point"
+    ]
+    X = X[feature_names]
     dataset["target"] = dataset["target"].astype(str)
     return dataset
 
@@ -74,11 +80,8 @@ if capitulo == "Introducción":
     variables_info = pd.DataFrame({
         "Variable": [
             "Elevación", "Orientación", "Pendiente", "Distancia_horizontal_a_hidrología",
-            "Distancia_vertical_a_hidrología", "Distancia_horizontal_a_carreteras", 
-            "Hillshade_9am", "Hillshade_Noon", "Hillshade_3pm", 
-            "Horizontal_Distance_To_Fire_Point", "Área silvestre 1", 
-            "Área silvestre 2", "Área silvestre 3", "Área silvestre 4", 
-            "Tipo de suelo 1-40"
+            "Distancia_vertical_a_hidrología", "Distancia_horizontal_a_carreteras",  
+            "Horizontal_Distance_To_Fire_Point"
         ],
         "Descripción": [
             "Elevación en metros.",
@@ -87,15 +90,7 @@ if capitulo == "Introducción":
             "Distancia horizontal a las características de agua superficial más cercanas.",
             "Distancia vertical a las características de agua superficial más cercanas.",
             "Distancia horizontal a la carretera más cercana.",
-            "Índice de sombra de las colinas a las 9 a. m., solsticio de verano. Valor de 255.",
-            "Índice de sombra de las colinas al mediodía, solsticio de verano. Valor de 255.",
-            "Índice de sombra de las colinas a las 3 p. m., solsticio de verano. Valor de 255.",
-            "Distancia horizontal a los puntos de ignición de incendios forestales más cercanos.",
-            "Área silvestre Rawah.",
-            "Área silvestre Neota.",
-            "Área silvestre Comanche Peak.",
-            "Área silvestre Cache la Poudre.",
-            "Tipos de suelo categorizados del 1 al 40."
+            "Distancia horizontal a los puntos de ignición de incendios forestales más cercanos."
         ]
     })
 
