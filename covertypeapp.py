@@ -50,7 +50,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
 ])
 # Diccionario con nombres de modelos y sus rutas
 model_paths = {
-    "Modelo K Nearest Neighbors": "best_model_trained_classifier.pkl.gz",
+    "Modelo K Nearest Neighbors": "best_model_trained_classifier_new.pkl.gz",
     "Modelo Red Neuronal": "model_trained_neuronal.pkl.gz",
     
 }
@@ -110,12 +110,12 @@ if capitulo == "Introducción":
 
     variable_obj = pd.DataFrame({
         "Tipo de cobertura": [
-            "Spruce/Fir - Pícea/abeto","Lodgepole Pine - Pino contorta","Ponderosa Pine - Pino ponderosa",
-            "Cottonwood/Willow - Álamo de Virginia/sauce","Aspen - Álamo temblón","Douglas-fir - Abeto de Douglas","Krummholz"
+            "Spruce/Fir - Pícea/abeto","Lodgepole Pine - Pino contorta","Otras"
+    
         ],
 
         "ID": [
-            "1","2","3","4","5","6","7"
+            "1","2","3"
         ]
     })
 
