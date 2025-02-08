@@ -32,13 +32,19 @@ dataset = cargar_datos()
 X = dataset.drop(columns=["target"])  # Variables predictoras
 y = dataset["target"]  # Variable objetivo
 
+# Ver distribución de clases
+st.write("📊 **Distribución de clases después de reclasificación:**")
+st.write(y.value_counts())
 
-# Dividir en conjuntos de entrenamiento y prueba (70%-30%)
-#X_train, X_test, y_train, y_test = train_test_split(
-#    X, y, test_size=0.3, random_state=123
-#)
-#st.write(f"🔹 X shape: {X.shape}")  # Dimensiones de X
-#st.write(f"🔹 y shape: {y.shape}")
+# Dividir en conjuntos de entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=123, stratify=y
+)
+
+# Mostrar información en Streamlit
+st.write(f"✅ **Datos cargados con {dataset.shape[0]} filas y {dataset.shape[1]} columnas.**")
+st.write("🔹 **Ejemplo de datos:**", dataset.head())
+
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
