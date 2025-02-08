@@ -229,6 +229,7 @@ elif capitulo == "Modelos de Clasificación":
         st.write("### 📏 Precisión del modelo:")
         
 #####Aquí
+    
 
     st.header("🤖 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
