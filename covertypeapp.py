@@ -23,6 +23,8 @@ def cargar_datos():
     dataset = pd.concat([X, y], axis=1)
     dataset.columns = list(X.columns) + ['target']
     dataset["target"] = dataset["target"].astype(str)
+    dataset["target"] = dataset["target"].apply(lambda x: x if x in [1, 2] else 3)
+    dataset["target"] = dataset["target"].astype(str)
     return dataset
 
 # Cargar el dataset
@@ -122,6 +124,8 @@ if capitulo == "Introducción":
     st.write("### 📋 Tipo de coberturas - Variable objetivo")
     st.table(variable_obj)
 
+    st.write("📊 **Distribución de clases después de reclasificación:**")
+    st.write(y.value_counts())
     st.write("""Fuente: Blackard, J. (1998). Covertype [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C50K5N.""")
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
