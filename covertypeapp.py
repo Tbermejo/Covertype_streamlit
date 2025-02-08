@@ -36,7 +36,6 @@ y = dataset["target"]  # Variable objetivo
 st.write("📊 **Distribución de clases después de reclasificación:**")
 st.write(y.value_counts())
 
-
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
 
