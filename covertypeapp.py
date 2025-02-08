@@ -104,7 +104,8 @@ if capitulo == "Introducción":
     st.table(variables_info)
     
 # Variable objetivo
-    st.write("""Donde la variable objetivo es el tipo de cobertura forestal, descrita a continuación:""")
+    st.write("""Donde la variable objetivo es el tipo de cobertura forestal, para el ejercicio, se realizó una reclasificación en tres tipos 
+, las cuales de describen a continuación:""")
 
     variable_obj = pd.DataFrame({
         "Tipo de cobertura": [
@@ -120,8 +121,19 @@ if capitulo == "Introducción":
     st.write("### 📋 Tipo de coberturas - Variable objetivo")
     st.table(variable_obj)
 
-    st.write("📊 **Distribución de clases después de reclasificación:**")
+    st.write("📊 **Distribución de clases después de la reclasificación:**")
     st.write(y.value_counts())
+    
+    class_distribution = y.value_counts()
+    fig, ax = plt.subplots()
+    class_distribution.plot(kind="bar", ax=ax, color="skyblue", edgecolor="black")
+    ax.set_title("Distribución de Clases")
+    ax.set_xlabel("Clase")
+    ax.set_ylabel("Frecuencia")
+    ax.set_xticks(range(len(class_distribution.index)))  # Asegurar etiquetas bien alineadas
+    ax.set_xticklabels(class_distribution.index, rotation=0)  # Evitar rotación de etiquetas
+    st.pyplot(fig)
+
     st.write("""Fuente: Blackard, J. (1998). Covertype [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C50K5N.""")
 elif capitulo == "Exploración de Datos":
     st.header("🔍 Exploración de Datos")
