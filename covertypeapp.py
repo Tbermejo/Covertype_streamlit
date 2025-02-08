@@ -225,16 +225,7 @@ elif capitulo == "Modelos de Clasificación":
             # Mostrar precisión en la barra lateral de Streamlit
         st.write("### 📏 Precisión del modelo:")
         
-if modelo is not None:
-    try:
-            accuracy = modelo.score(X_test, y_test)  # Calcula la precisión
-            st.write("### 📏 Precisión del modelo:")
-            st.write(f"📊 **Accuracy:** {accuracy:.4f}")
-            st.caption("📘 Métrica que indica la precisión del modelo.")
-    except Exception as e:
-        st.error(f"⚠️ Error al calcular la precisión: {e}")
-    else:
-        st.warning("⚠️ No se pudo cargar el modelo.")
+#####Aquí
 
     
 
