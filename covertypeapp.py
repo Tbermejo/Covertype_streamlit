@@ -175,7 +175,7 @@ elif capitulo == "Visualización de Datos":
     
 elif capitulo == "Modelos de Clasificación":
     st.header("🤖 K- Nearest Neighbors")
-    st.write("Aquí se implementará un modelo previamente entrenado por el método KNeighborsClassifier.")
+    st.write("Información del modelo previamente entrenado por el método K Nearest Neighbors.")
 
     
     #Información del modelo
@@ -227,7 +227,8 @@ elif capitulo == "Modelos de Clasificación":
         
 #####Aquí
 
-
+    st.header("🤖 Modelo Redes Neuronales")
+    st.write("Información del modelo previamente entrenado por el método redes neuronales.")
 
     # Definir las características que necesita el modelo
 feature_names = [
