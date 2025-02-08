@@ -23,12 +23,7 @@ def cargar_datos():
     y = covertype.data.targets
     dataset = pd.concat([X, y], axis=1)
     dataset.columns = list(X.columns) + ['target']
-    #dataset["target"] = dataset["target"].astype(str)
     dataset["target"] = pd.to_numeric(dataset["target"], errors="coerce")
-
-# Verificar los valores únicos antes de reclasificar
-    st.write("📌 Valores únicos antes de reclasificación:", dataset["target"].unique())
-
     dataset["target"] = dataset["target"].apply(lambda x: x if x in [1, 2] else 3)
     dataset["target"] = dataset["target"].astype(str)
     return dataset
