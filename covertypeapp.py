@@ -36,10 +36,6 @@ y = dataset["target"]  # Variable objetivo
 st.write("📊 **Distribución de clases después de reclasificación:**")
 st.write(y.value_counts())
 
-# Dividir en conjuntos de entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=123, stratify=y
-)
 
 # Mostrar información en Streamlit
 st.write(f"✅ **Datos cargados con {dataset.shape[0]} filas y {dataset.shape[1]} columnas.**")
