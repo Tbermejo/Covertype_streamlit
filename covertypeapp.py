@@ -30,7 +30,10 @@ def cargar_datos():
         "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
         "Horizontal_Distance_To_Fire_Point"
     ]
-    X = X[feature_names]
+    feature_names = [col for col in feature_names if col in X.columns]  
+    print(f"📌 Variables seleccionadas: {feature_names}")  # Verificar qué columnas se usan
+
+    #X = X[feature_names]
     dataset["target"] = dataset["target"].astype(str)
     return dataset
 
