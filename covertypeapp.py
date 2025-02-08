@@ -227,7 +227,6 @@ elif capitulo == "Modelos de Clasificación":
         
 #####Aquí
 
-    
 
 
     # Definir las características que necesita el modelo
