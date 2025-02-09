@@ -213,7 +213,7 @@ elif capitulo == "Modelos de Clasificación":
     **learning_rate:** 0.0006558000197767294
     
     """)
-    img1 = image.open("Imagen_rendimiento_modelo_redes.jpeg")
+    img1 = image.open("https://github.com/Tbermejo/Covertype_streamlit/blob/main/Imagen_rendimiento_modelo_redes.jpeg")
     st.image(img1, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
     # Definir las características que necesita el modelo
 
