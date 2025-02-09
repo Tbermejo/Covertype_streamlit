@@ -269,8 +269,9 @@ for col, info in variables_range.items():
         value=(info["min"] + info["max"]) / 2
     )
     valores_usuario.append(valor)
- if st.sidebar.button("🔍 Clasificar Cobertura"):
-    if modelo is not None:
+    
+    if st.sidebar.button("🔍 Clasificar Cobertura"):
+        if modelo is not None:
         entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
 
         # Verificar si el modelo es una red neuronal
