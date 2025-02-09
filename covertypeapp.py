@@ -129,7 +129,7 @@ if capitulo == "Introducción":
     fig, ax = plt.subplots(figsize=(7, 5))
     colors = ["#FF6F61", "#6B5B95", "#88B04B", "#F7CAC9", "#92A8D1", "#955251", "#B565A7"]
     class_distribution.plot(kind="bar", ax=ax, color=colors[:len(class_distribution)], edgecolor="black")
-    ax.set_title("📊 Distribución de Clases", fontsize=14, fontweight="bold", color="#333333")
+    ax.set_title("Distribución de Clases", fontsize=14, fontweight="bold", color="#333333")
     ax.set_xlabel("Clase", fontsize=12, fontweight="bold", color="#555555")
     ax.set_ylabel("Frecuencia", fontsize=12, fontweight="bold", color="#555555")
     ax.set_xticklabels(class_distribution.index, rotation=0, fontsize=11)
