@@ -205,6 +205,13 @@ elif capitulo == "Modelos de Clasificación":
     """)
     img0 = Image.open("model_KNN.png")
     st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
+
+    variables_report = pd.DataFrame({
+        "ID": ["1","2","3","4","5","6","7"," ","accuracy","macro avg","weighted avg"],
+        "Precision":["0.94","0.95","0.93","0.88","0.86","0.88","0.95"," "," ","0.91","0.94"]
+    })
+    st.write("###Reporte de Clasificación")
+    st.table(variables_repor)
     
     st.header("🧠 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
