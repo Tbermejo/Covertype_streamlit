@@ -270,30 +270,27 @@ for col, info in variables_range.items():
     )
     valores_usuario.append(valor)
 
-if st.sidebar.button("🔍 Clasificar Cobertura"):
+ if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
         entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
-        entrada = scaler.transform(entrada) 
-        
-        
+
+        # Verificar si el modelo es una red neuronal
+        if hasattr(modelo, "predict_proba"):  
+            entrada = entrada.astype(np.float32)  # Convertir a float32 si es necesario
+
         try:
             prediccion = modelo.predict(entrada)  # Hacer la predicción
 
             # Si la predicción es un array de probabilidades, convertir a clase
             if isinstance(modelo, tf.keras.Model):
-                if prediccion.shape[1] > 1:  # Si es multiclase (Softmax)
+                if prediccion.shape[1] > 1:  # Si la salida es multiclase (softmax)
                     prediccion = np.argmax(prediccion, axis=1)  
-                else:  # Si es binaria (Sigmoid)
-                    prediccion = (prediccion > 0.5).astype(int) 
-
-        
+                else:  # Si es binaria (sigmoid)
+                    prediccion = np.round(prediccion).astype(int)
+                    
             st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
-            
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
-
-
-
 
