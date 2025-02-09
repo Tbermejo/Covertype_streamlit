@@ -206,7 +206,6 @@ elif capitulo == "Modelos de Clasificación":
     img0 = Image.open("model_KNN.png")
     st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
     
-
     st.header("🧠 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
 
