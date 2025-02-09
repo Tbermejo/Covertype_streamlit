@@ -269,7 +269,6 @@ for col, info in variables_range.items():
         value=(info["min"] + info["max"]) / 2
     )
     valores_usuario.append(valor)
-
  if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
         entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
@@ -293,4 +292,3 @@ for col, info in variables_range.items():
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
-
