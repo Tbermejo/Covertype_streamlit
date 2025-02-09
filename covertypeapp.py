@@ -265,9 +265,12 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
             prediccion = modelo.predict(entrada)  # Hacer la predicción
 
             # Si la predicción es un array de probabilidades, convertir a clase
-            if len(prediccion.shape) > 1 and prediccion.shape[1] > 1:
-                prediccion = np.argmax(prediccion, axis=1)  # Tomar la clase con mayor probabilidad
-
+            if isinstance(modelo, tf.keras.Model):
+                if prediccion.shape[1] > 1:  # Si la salida es multiclase (softmax)
+                    prediccion = np.argmax(prediccion, axis=1)  
+                else:  # Si es binaria (sigmoid)
+                    prediccion = np.round(prediccion).astype(int)
+                    
             st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
