@@ -12,6 +12,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
+from PIL import Image
 
 # Configuración de la página
 st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
@@ -213,8 +214,10 @@ elif capitulo == "Modelos de Clasificación":
     **learning_rate:** 0.0006558000197767294
     
     """)
-    img1 = image("Imagen_rendimiento_modelo_redes.jpeg")
-    st.image(img1, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
+    
+    img = Image.open("ruta/a/la/imagen.jpeg")
+    st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
+    
     # Definir las características que necesita el modelo
 
 feature_names = [
