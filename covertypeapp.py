@@ -196,10 +196,10 @@ elif capitulo == "Modelos de Clasificación":
     #Información del modelo
     st.write("📊 Parámetros del Modelo")
     st.write("""
-    **Entrenando modelo: KNN**
-    Fitting 5 folds for each of 14 candidates, totalling 70 fits
-    Precisión en test: 0.9411832201211676
-    **Mejores hiperparámetros:**
+    **Entrenando modelo: KNN** \n
+    Fitting 5 folds for each of 14 candidates, totalling 70 fits. \n
+    Precisión en test: 0.94 \n
+    **Mejores hiperparámetros:** \n
     model__n_neighbors: 3 \n
     model__p': 1 \n
     """)
