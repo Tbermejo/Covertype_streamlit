@@ -207,10 +207,13 @@ elif capitulo == "Modelos de Clasificación":
     st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
 
     variables_report = pd.DataFrame({
-        "ID": ["1","2","3","4","5","6","7"," ","accuracy","macro avg","weighted avg"],
-        "Precision":["0.94","0.95","0.93","0.88","0.86","0.88","0.95"," "," ","0.91","0.94"]
+        " ": ["1","2","3","4","5","6","7"," ","accuracy","macro avg","weighted avg"],
+        "Precision":["0.94","0.95","0.93","0.88","0.86","0.88","0.95"," "," ","0.91","0.94"],
+        "Recall":["0.94","0.95","0.93","0.81","0.81","0.85","0.94"," "," ","0.89","0.94"],
+        "f1-score":["0.94","0.95","0.93","0.85","0.83","0.86","0.95"," ","0.94","0.90","0.94"],
+        "support":["63552","84991","10726","824","2848","5210","6153","174304","174304","174304"]
     })
-    st.write("###Reporte de Clasificación")
+    st.write("### Reporte de Clasificación")
     st.table(variables_report)
     
     st.header("🧠 Modelo Redes Neuronales")
