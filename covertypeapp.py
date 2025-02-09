@@ -218,7 +218,7 @@ elif capitulo == "Modelos de Clasificación":
     img = Image.open("Imagen_rendimiento_modelo_redes.jpeg")
     img1 = Image.open("Estructura_modelo_png")
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
-    st.image(img, caption="Estructura Modelo Red Neuronal", use_container_width=True)
+    st.image(img1, caption="Estructura Modelo Red Neuronal", use_container_width=True)
     # Definir las características que necesita el modelo
 
 feature_names = [
@@ -251,27 +251,28 @@ for col, info in variables_range.items():
     )
     valores_usuario.append(valor)
 
-# Botón de clasificación
 if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
-        entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
-
-        # Verificar si el modelo es una red neuronal
-        if hasattr(modelo, "predict_proba"):  
-            entrada = entrada.astype(np.float32)  # Convertir a float32 si es necesario
+        entrada = np.array(valores_usuario).reshape(1, -1).astype(np.float32)  # Convertir a matriz y float32
 
         try:
             prediccion = modelo.predict(entrada)  # Hacer la predicción
 
-            # Si la predicción es un array de probabilidades, convertir a clase
-            if len(prediccion.shape) > 1 and prediccion.shape[1] > 1:
-                prediccion = np.argmax(prediccion, axis=1)  # Tomar la clase con mayor probabilidad
+            # ✅ Verificar si es un modelo DNN y ajustar salida
+            if isinstance(modelo, tf.keras.Model):
+                if prediccion.shape[1] > 1:  # Si la salida es multiclase (softmax)
+                    prediccion = np.argmax(prediccion, axis=1)  
+                else:  # Si es binaria (sigmoid)
+                    prediccion = np.round(prediccion).astype(int)
 
-            st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
+            # ✅ Unificar salida con KNN
+            st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")
+
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
+
 
 
 
