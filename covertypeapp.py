@@ -283,7 +283,7 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
             # Si la predicción es un array de probabilidades, convertir a clase
             if isinstance(modelo, tf.keras.Model):
                 prediccion = modelo.predict(entrada)
-                print("Predicción cruda:", prediccion)  # Debugging
+                
 
                 if prediccion.shape[1] > 1:  # Si es multiclase (Softmax)
                     prediccion = np.argmax(prediccion, axis=1)  
@@ -292,6 +292,7 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
 
         
             st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
+            st.sidebar.success(f"Predicción cruda:", prediccion)
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
