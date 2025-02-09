@@ -44,6 +44,7 @@ def cargar_datos():
 dataset = cargar_datos()
 X = dataset.drop(columns=["target"])  # Variables predictoras
 y = dataset["target"]  # Variable objetivo
+scaler = StandardScaler()
 
 numeric_columns = dataset.select_dtypes(include=["float64", "int64"]).columns
 categorical_columns = dataset.select_dtypes(include=["object", "category"]).columns
