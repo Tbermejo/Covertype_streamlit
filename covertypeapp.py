@@ -201,7 +201,7 @@ elif capitulo == "Modelos de Clasificación":
 #####Aquí
     
 
-    st.header("🤖 Modelo Redes Neuronales")
+    st.header("🧠 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
 
     st.write("""**Mejores hiperparámetros encontrados:** \n
@@ -216,9 +216,9 @@ elif capitulo == "Modelos de Clasificación":
     """)
     
     img = Image.open("Imagen_rendimiento_modelo_redes.jpeg")
-
+    img1 = Image.open("Estructura_modelo_png")
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
-    
+    st.image(img, caption="Estructura Modelo Red Neuronal", use_container_width=True)
     # Definir las características que necesita el modelo
 
 feature_names = [
