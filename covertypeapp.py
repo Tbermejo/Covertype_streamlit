@@ -215,7 +215,8 @@ elif capitulo == "Modelos de Clasificación":
     
     """)
     
-    img = Image.open("ruta/a/la/imagen.jpeg")
+    img = Image.open("Imagen_rendimiento_modelo_redes.jpeg")
+
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
     
     # Definir las características que necesita el modelo
