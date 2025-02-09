@@ -211,7 +211,7 @@ elif capitulo == "Modelos de Clasificación":
         "Precision":["0.94","0.95","0.93","0.88","0.86","0.88","0.95"," "," ","0.91","0.94"]
     })
     st.write("###Reporte de Clasificación")
-    st.table(variables_repor)
+    st.table(variables_report)
     
     st.header("🧠 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
