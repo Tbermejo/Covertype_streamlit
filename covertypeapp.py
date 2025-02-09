@@ -270,7 +270,7 @@ for col, info in variables_range.items():
     )
     valores_usuario.append(valor)
 
- if st.sidebar.button("🔍 Clasificar Cobertura"):
+if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
         entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
 
