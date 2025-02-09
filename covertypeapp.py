@@ -207,11 +207,11 @@ elif capitulo == "Modelos de Clasificación":
     st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
 
     variables_report = pd.DataFrame({
-        " ": ["1","2","3","4","5","6","7"," ","accuracy","macro avg","weighted avg"],
-        "Precision":["0.94","0.95","0.93","0.88","0.86","0.88","0.95"," "," ","0.91","0.94"],
-        "Recall":["0.94","0.95","0.93","0.81","0.81","0.85","0.94"," "," ","0.89","0.94"],
-        "f1-score":["0.94","0.95","0.93","0.85","0.83","0.86","0.95"," ","0.94","0.90","0.94"],
-        "support":["63552","84991","10726","824","2848","5210","6153"," ","174304","174304","174304"]
+        " ": ["1","2","3"," ","accuracy","macro avg","weighted avg"],
+        "Precision":["0.94","0.95","0.95"," "," ","0.95","0.95"],
+        "Recall":["0.94","0.95","0.95"," "," ","0.95","0.95"],
+        "f1-score":["0.94","0.95","0.95","0.95"," ","0.95","0.95","0.95"],
+        "support":["63552","84991","25761"," ","174304","174304","174304"]
     })
     
     st.write("### Reporte de Clasificación")
@@ -272,19 +272,14 @@ for col, info in variables_range.items():
 if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
         entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
-
-        # Verificar si el modelo es una red neuronal
-        if hasattr(modelo, "predict_proba"):  
-            entrada = entrada.astype(np.float32)  # Convertir a float32 si es necesario
-
+        entrada = scaler.transform(entrada) 
+        
+        
         try:
             prediccion = modelo.predict(entrada)  # Hacer la predicción
 
             # Si la predicción es un array de probabilidades, convertir a clase
             if isinstance(modelo, tf.keras.Model):
-                prediccion = modelo.predict(entrada)
-                
-
                 if prediccion.shape[1] > 1:  # Si es multiclase (Softmax)
                     prediccion = np.argmax(prediccion, axis=1)  
                 else:  # Si es binaria (Sigmoid)
@@ -292,7 +287,7 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
 
         
             st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
-            st.sidebar.success(f"Predicción cruda:", prediccion)
+            
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
