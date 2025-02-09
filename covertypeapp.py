@@ -213,6 +213,7 @@ elif capitulo == "Modelos de Clasificación":
         "f1-score":["0.94","0.95","0.93","0.85","0.83","0.86","0.95"," ","0.94","0.90","0.94"],
         "support":["63552","84991","10726","824","2848","5210","6153","174304","174304","174304"]
     })
+    
     st.write("### Reporte de Clasificación")
     st.table(variables_report)
     
