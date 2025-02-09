@@ -192,50 +192,10 @@ elif capitulo == "Modelos de Clasificación":
     
     #Información del modelo
     st.write("📊 Parámetros del Modelo")
-    modelo = cargar_modelo(model_paths[modelo_seleccionado])
-    if modelo is not None:
-        modelo_tipo = type(modelo).__name__
-        st.write(f"📌 **Tipo de modelo:** {modelo_tipo}")
-
-        # Si el modelo es un pipeline, extraer la última etapa (el modelo real)
-        if isinstance(modelo, Pipeline):
-            modelo_real = modelo.named_steps.get("reg")  # Extrae la etapa "reg" (el regresor)
-            scaler_usado = modelo.named_steps.get("scaler")
-        else:
-            modelo_real = modelo
-            scaler_usado = None
-
-        if modelo_real:
-            st.write(f"🛠 **Modelo en uso:** {type(modelo_real).__name__}")
     
-        if scaler_usado:
-            st.write(f"⚖️ **Escalador aplicado:** {type(scaler_usado).__name__}")
-
-        try:
-            if model is not None:
-                params = model.get_params()
-            else:
-                params = {}
-                st.write("### 🔧 Hiperparámetros Ajustados:")
-
-        # Diccionario con descripciones de los hiperparámetros más comunes
-            hyperparam_descriptions = {
-                "model__n_neighbors": "Número óptimo de vecinos más cercanos.",
-                "model__p": "métrica de distancia utilizada para calcular la similitud entre puntos."
-            }
-
-            for key, value in params.items():
-                explanation = hyperparam_descriptions.get(key, "Sin descripción disponible")
-                st.write(f"🔹 **{key}:** {value}")
-                st.caption(f"📘 {explanation}")  
-
-    
-        except Exception as e:
-            st.error(f"⚠️ Error al obtener los hiperparámetros del modelo: {e}")
 
 
-            # Mostrar precisión en la barra lateral de Streamlit
-        st.write("### 📏 Precisión del modelo:")
+        
         
 #####Aquí
     
@@ -243,6 +203,16 @@ elif capitulo == "Modelos de Clasificación":
     st.header("🤖 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
 
+    st.write("""**Mejores hiperparámetros encontrados:** \n
+    **depth:** 3 \n
+    **epochs:** 5 \n
+    **num_units:** 80 \n
+    **optimizer:** 'rmsprop' \n
+    **activation:** 'tanh' \n
+    **batch_size:** 56 \n
+    **learning_rate:** 0.0006558000197767294
+
+    """)
     # Definir las características que necesita el modelo
 feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
