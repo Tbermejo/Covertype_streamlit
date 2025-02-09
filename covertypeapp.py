@@ -56,7 +56,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
 # Diccionario con nombres de modelos y sus rutas
 model_paths = {
     "Modelo K Nearest Neighbors": "best_model_trained_classifier_new.pkl.gz",
-    "Modelo Red Neuronal": "model_trained_neuronal_new.pkl.gz",
+    "Modelo Red Neuronal": "best_model (2).pkl.gz",
     
 }
 
@@ -212,8 +212,12 @@ elif capitulo == "Modelos de Clasificación":
     **batch_size:** 56 \n
     **learning_rate:** 0.0006558000197767294
 
+    img1 = image.open("Imagen_rendimiento_modelo_redes.jpeg")
+    
     """)
+    st.image(img1, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
     # Definir las características que necesita el modelo
+
 feature_names = [
     "Elevation", "Aspect", "Slope", "Horizontal_Distance_To_Hydrology",
     "Vertical_Distance_To_Hydrology", "Horizontal_Distance_To_Roadways",
