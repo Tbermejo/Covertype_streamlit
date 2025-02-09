@@ -289,7 +289,8 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
                     prediccion = np.argmax(prediccion, axis=1)  
                 else:  # Si es binaria (Sigmoid)
                     prediccion = (prediccion > 0.5).astype(int) 
-                    
+
+        
             st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
