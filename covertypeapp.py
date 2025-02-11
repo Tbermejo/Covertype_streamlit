@@ -16,6 +16,7 @@ from PIL import Image
 import tensorflow as tf
 tf.config.set_visible_devices([], 'GPU')
 
+
 # Configuración de la página
 
 st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
