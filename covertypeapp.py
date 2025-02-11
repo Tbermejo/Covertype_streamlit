@@ -62,7 +62,7 @@ capitulo = st.sidebar.radio("Selecciona un capítulo:", [
 # Diccionario con nombres de modelos y sus rutas
 model_paths = {
     "Modelo K Nearest Neighbors": "best_model_trained_classifier_new.pkl.gz",
-    "Modelo Red Neuronal": "best_model (2).pkl.gz",
+    "Modelo Red Neuronal": "model_trained_neuronal_new.pkl.gz",
     
 }
 
