@@ -5,3 +5,6 @@ plotly
 seaborn
 pandas
 numpy
+matplotlib
+Pillow
+streamlit
