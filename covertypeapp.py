@@ -14,9 +14,10 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
 from PIL import Image
 import tensorflow as tf
-
+tf.config.set_visible_devices([], 'GPU')
 
 # Configuración de la página
+
 st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
 
 def cargar_datos():
