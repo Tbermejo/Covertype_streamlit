@@ -240,7 +240,7 @@ elif capitulo == "Modelos de Clasificación":
     
     
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
-    st.write("Estructura del modelo:")
+    st.write("Estructura del modelo.")
     
     # Definir las características que necesita el modelo
 
