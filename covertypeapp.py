@@ -234,7 +234,6 @@ elif capitulo == "Modelos de Clasificación":
     **learning_rate:** 0.000202168 \n
     **Accuracy del modelo:** 0.8861
     
-    
     """)
     
     img = Image.open("Imagen_rendimiento_modelo_redes.jpeg")
