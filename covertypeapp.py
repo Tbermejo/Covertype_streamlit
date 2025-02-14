@@ -237,11 +237,11 @@ elif capitulo == "Modelos de Clasificación":
     """)
     
     img = Image.open("nuevo modelo.jpeg")
-    img1 = Image.open("Estructura_modelo_redes.png")
+    
     
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
     st.write("Estructura del modelo:")
-    st.image(img1, caption="Estructura Modelo Red Neuronal", use_container_width=True)
+    
     # Definir las características que necesita el modelo
 
 feature_names = [
