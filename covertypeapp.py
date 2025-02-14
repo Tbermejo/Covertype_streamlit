@@ -223,14 +223,17 @@ elif capitulo == "Modelos de Clasificación":
     st.header("🧠 Modelo Redes Neuronales")
     st.write("Información del modelo previamente entrenado por el método redes neuronales.")
 
-    st.write("""**Mejores hiperparámetros encontrados:** \n
-    **depth:** 3 \n
-    **epochs:** 5 \n
-    **num_units:** 80 \n
+    st.write("""
+    **Mejores hiperparámetros encontrados:** \n
+    **depth:** 4 \n
+    **epochs:** 36 \n
+    **num_units:** 128 \n
     **optimizer:** 'rmsprop' \n
-    **activation:** 'tanh' \n
-    **batch_size:** 56 \n
-    **learning_rate:** 0.0006558000197767294
+    **activation:** relu \n
+    **batch_size:** 72 \n
+    **learning_rate:** 0.000202168 \n
+    **Accuracy del modelo:** 0.8861
+    
     
     """)
     
@@ -272,6 +275,21 @@ for col, info in variables_range.items():
     )
     valores_usuario.append(valor)
 
+
+
+# Diccionarios de mapeo de clases
+mapeo_knn = {
+    1: "Bosques de Pícea y Abeto",
+    2: "Bosques de Pino",
+    3: "Otros tipos de bosque"
+}
+
+mapeo_red_neuronal = {
+    0: "Bosques de Pícea y Abeto",
+    1: "Bosques de Pino",
+    2: "Otros tipos de bosque"
+}
+
 if st.sidebar.button("🔍 Clasificar Cobertura"):
     if modelo is not None:
         entrada = np.array(valores_usuario).reshape(1, -1)  # Convertir a matriz
@@ -289,9 +307,13 @@ if st.sidebar.button("🔍 Clasificar Cobertura"):
                     prediccion = np.argmax(prediccion, axis=1)  
                 else:  # Si es binaria (sigmoid)
                     prediccion = np.round(prediccion).astype(int)
-                    
-            st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {int(prediccion[0])}")  
+                tipo_cobertura = mapeo_red_neuronal[int(prediccion[0])]
+            else:
+                tipo_cobertura = mapeo_knn[int(prediccion[0])]
+
+            st.sidebar.success(f"🌲 Tipo de cobertura clasificada: {tipo_cobertura}")  
         except Exception as e:
             st.error(f"⚠️ Error al hacer la predicción: {e}")
     else:
         st.error("⚠️ No se pudo hacer la clasificación porque el modelo no está cargado.")
+
